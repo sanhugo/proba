@@ -4,10 +4,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * перечисление всех экзаменов
+ */
+
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ExamSubject {
     // Обязательные
-    RUSSIAN_LANGUAGE("Русский язык", ExamType.BOTH),
+    RUSSIAN_LANGUAGE("Русский язык", ExamType.EGE),
+    RUSSIAN_OGE("Русский язык",  ExamType.OGE),
     MATHEMATICS_BASIC("Математика базовая", ExamType.EGE),
     MATHEMATICS_PROFILE("Математика профильная", ExamType.EGE),
     MATHEMATICS("Математика", ExamType.OGE),
@@ -22,6 +27,7 @@ public enum ExamSubject {
     GEOGRAPHY("География", ExamType.EGE),
     LITERATURE("Литература", ExamType.EGE),
     ENGLISH("Английский язык", ExamType.EGE),
+    ENGLISH_SPEAKING("Английский язык (говорение)", ExamType.EGE),
     GERMAN("Немецкий язык", ExamType.EGE),
     FRENCH("Французский язык", ExamType.EGE),
     SPANISH("Испанский язык", ExamType.EGE),
