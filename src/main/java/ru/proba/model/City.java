@@ -1,12 +1,12 @@
 package ru.proba.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Модель города с названием города и временной зоной, в которой город находится
+ */
 @Entity
 @Getter
 @Setter
@@ -14,7 +14,12 @@ public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(nullable = false)
+    private Integer id;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
+    private String timezone;
 }

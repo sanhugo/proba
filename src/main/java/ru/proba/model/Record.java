@@ -19,10 +19,11 @@ public class Record {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private User user;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private ExamSubject subject;
 
-    private Boolean isPresent = false;
 }

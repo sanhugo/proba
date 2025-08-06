@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Getter;
 import lombok.Setter;
-import ru.proba.enums.ExamSubject;
 
 @Entity
 @Getter

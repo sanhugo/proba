@@ -6,7 +6,7 @@ import jakarta.validation.constraints.FutureOrPresent;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +25,9 @@ public class Probe {
 
     @FutureOrPresent
     @Column(nullable = false)
-    private LocalDateTime date;
+    private LocalDate date;
 
+    @Column(nullable = false)
     private LocalTime startTime;
 
     @OneToMany

@@ -1,7 +1,7 @@
-package ru.proba.controller;
+package ru.proba.controller.web;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CityController {
+public class RecordWebController {
 }
