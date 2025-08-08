@@ -12,6 +12,7 @@ import ru.proba.enums.ExamSubject;
 @Entity
 @Getter
 @Setter
+@Table(name = "records")
 public class Record {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

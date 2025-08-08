@@ -17,6 +17,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Table(name = "probes")
 public class Probe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -10,6 +10,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name = "cities")
 public class City {
 
     @Id
@@ -22,4 +23,7 @@ public class City {
 
     @Column(nullable = false)
     private String timezone;
+
+    @Column(nullable = false)
+    private Boolean active;
 }

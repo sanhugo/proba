@@ -5,11 +5,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserWebController {
+
+
 
     @GetMapping("/add")
     public String add() {
-        return "Added";
+
+        return "redirect:/users";
     }
 }

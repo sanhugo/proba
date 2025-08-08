@@ -1,5 +1,6 @@
 package ru.proba.model;
 
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,18 +8,22 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "rooms")
-public class Room {
+@Table(name = "profiles")
+public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Building building;
+    @Column(nullable = false)
+    private String name;
+
+    private String secondName;
 
     @Column(nullable = false)
-    private String num;
+    private String surname;
 
-    @Column(nullable = false)
-    private Integer capacity;
+    @OneToOne
+    @MapsId
+    @JoinColumn(nullable = false, name = "users_id")
+    private User user;
 }
