@@ -1,20 +1,16 @@
-package ru.proba.DTO;
+package ru.proba.DTO.city;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.io.Serializable;
-
-/**
- * DTO for {@link ru.proba.model.City}
- */
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-public class CityDto{
-    @NotBlank
-    private Integer id;
+public class CityAdditionDTO {
     @NotBlank(message = "Впишите название города")
     private String name;
     @NotBlank(message = "Выберите часовой пояс")

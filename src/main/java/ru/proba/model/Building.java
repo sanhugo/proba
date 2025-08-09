@@ -22,4 +22,7 @@ public class Building {
     private String address;
 
     private String description;
+
+    @Column(nullable = false)
+    private Boolean active;
 }

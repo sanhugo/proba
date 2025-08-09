@@ -25,6 +25,7 @@ public class User {
 
     private Long tg_id;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private ArrayList<Role> roles;
 

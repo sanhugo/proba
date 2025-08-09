@@ -1,0 +1,162 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-1">
+        <createTable tableName="records">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="records_pkey"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-2">
+        <createTable tableName="probes_records">
+            <column name="probe_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="records_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-3">
+        <createTable tableName="results">
+            <column name="score" type="INTEGER"/>
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="results_pkey"/>
+            </column>
+            <column name="record_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-4">
+        <createTable tableName="rooms">
+            <column name="capacity" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="building_id" type="BIGINT"/>
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="rooms_pkey"/>
+            </column>
+            <column name="num" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-5">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="users_pkey"/>
+            </column>
+            <column name="profile_users_id" type="BIGINT"/>
+            <column name="tg_id" type="BIGINT"/>
+            <column name="login" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roles" type="BYTEA"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-6">
+        <addUniqueConstraint columnNames="records_id" constraintName="probes_records_records_id_key" tableName="probes_records"/>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-7">
+        <addUniqueConstraint columnNames="record_id" constraintName="results_record_id_key" tableName="results"/>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-8">
+        <addUniqueConstraint columnNames="building_id" constraintName="rooms_building_id_key" tableName="rooms"/>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-9">
+        <addUniqueConstraint columnNames="profile_users_id" constraintName="users_profile_users_id_key" tableName="users"/>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-10">
+        <createTable tableName="buildings">
+            <column name="cities_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="buildings_pkey"/>
+            </column>
+            <column name="address" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-11">
+        <createTable tableName="cities">
+            <column name="active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cities_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="timezone" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-12">
+        <createTable tableName="probes">
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_time" type="time(6) WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="probes_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-13">
+        <createTable tableName="profiles">
+            <column name="users_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="profiles_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="second_name" type="VARCHAR(255)"/>
+            <column name="surname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-14">
+        <addForeignKeyConstraint baseColumnNames="probe_id" baseTableName="probes_records" constraintName="fk5pnaqd5kynrw9vvx8rue5y1px" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="probes" validate="true"/>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-15">
+        <addForeignKeyConstraint baseColumnNames="users_id" baseTableName="profiles" constraintName="fk6i9scntmiae7cg89oau9mubwr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-16">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="records" constraintName="fk6p95uajgka0j0dc9vlbjw1sf1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-17">
+        <addForeignKeyConstraint baseColumnNames="cities_id" baseTableName="buildings" constraintName="fkeyftus6n4tp8g3nae1r0fb7sb" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="cities" validate="true"/>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-18">
+        <addForeignKeyConstraint baseColumnNames="records_id" baseTableName="probes_records" constraintName="fki9thbbw13p8m1w1mhb1mojoup" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="records" validate="true"/>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-19">
+        <addForeignKeyConstraint baseColumnNames="record_id" baseTableName="results" constraintName="fkkrr20bvsrs9vp3cjin1oicg9a" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="records" validate="true"/>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-20">
+        <addForeignKeyConstraint baseColumnNames="building_id" baseTableName="rooms" constraintName="fkojgn0sxhkfxd7pmmojnem9r4q" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="buildings" validate="true"/>
+    </changeSet>
+    <changeSet author="Acer Nitro (generated)" id="1754758166414-21">
+        <addForeignKeyConstraint baseColumnNames="profile_users_id" baseTableName="users" constraintName="fktftrmf7y1j60bpek1nxlen53r" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="users_id" referencedTableName="profiles" validate="true"/>
+    </changeSet>
+
+    <include file="10-01-changelog.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>
+
+

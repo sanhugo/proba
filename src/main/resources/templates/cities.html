@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Список городов</title>
@@ -24,9 +24,13 @@
             <td th:text="${city.name}"></td>
             <td th:text="${city.timezone}"></td>
             <td>
-                <form th:action="@{/cities/deactivate}" method="post">
-                    <input type="hidden" name="id" th:value="${city.id}"/>
-                    <button type="submit">Деактивировать</button>
+                <form th:action="${city.active} ? @{/cities/deactivate} : @{/cities/activate}" method="post" style="display:inline;">
+                    <input type="hidden" name="id" th:value="${city.id}" />
+                    <button type="submit"
+                            class="btn"
+                            th:classappend="${city.active} ? ' btn-danger' : ' btn-success'"
+                            th:text="${city.active} ? 'Деактивировать' : 'Активировать'">
+                    </button>
                 </form>
             </td>
         </tr>

@@ -5,8 +5,10 @@ import org.springframework.stereotype.Repository;
 import ru.proba.model.City;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CityRepository extends JpaRepository<City, Integer> {
     List<City> findByActive(Boolean active);
+    Optional<City> findByNameAndTimezone(String name, String timezone);
 }

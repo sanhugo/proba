@@ -20,11 +20,10 @@ public class Record {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false,name = "users_id")
     private User user;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ExamSubject subject;
-
 }

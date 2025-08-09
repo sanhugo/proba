@@ -1,8 +1,9 @@
 package ru.proba.service;
 
 import org.springframework.stereotype.Service;
-import ru.proba.DTO.CityAdditionDTO;
-import ru.proba.DTO.CityDto;
+import ru.proba.DTO.city.CityAdditionDTO;
+import ru.proba.DTO.city.CityDto;
+import ru.proba.DTO.city.CityVisualDTO;
 import ru.proba.converter.CityConverter;
 import ru.proba.model.City;
 import ru.proba.repositories.CityRepository;
@@ -20,11 +21,14 @@ public class CityService {
     }
 
     public void save(CityAdditionDTO city) {
-        City cityEntity = new City();
-        cityEntity.setName(city.getName());
-        cityEntity.setTimezone(city.getTimezone());
-        cityEntity.setActive(Boolean.TRUE);
-        cityRepository.save(cityEntity);
+        if (cityRepository.findByNameAndTimezone(city.getName().trim(),city.getTimezone()).isEmpty())
+        {
+            City cityEntity = new City();
+            cityEntity.setName(city.getName());
+            cityEntity.setTimezone(city.getTimezone());
+            cityEntity.setActive(Boolean.TRUE);
+            cityRepository.save(cityEntity);
+        }
     }
 
     public void blockCity(Integer cityId) {
@@ -36,13 +40,8 @@ public class CityService {
         }
     }
 
-    public List<CityDto> getActiveCities() {
-        List<City> cities = cityRepository.findByActive(Boolean.TRUE);
-        return CityConverter.convertToDTO(cities);
-    }
-
-    public List<CityDto> getInactiveCities() {
-        List<City> cities = cityRepository.findByActive(Boolean.FALSE);
+    public List<CityVisualDTO> getCities() {
+        List<City> cities = cityRepository.findAll();
         return CityConverter.convertToDTO(cities);
     }
 
@@ -50,8 +49,13 @@ public class CityService {
         Optional<City> s = cityRepository.findById(id);
         if (s.isPresent()) {
             City city = s.get();
-            city.setActive(Boolean.FALSE);
+            city.setActive(Boolean.TRUE);
             cityRepository.save(city);
         }
+    }
+
+    public List<CityDto> getActiveCities() {
+        List<City> cities = cityRepository.findByActive(Boolean.TRUE);
+        return CityConverter.convertToDto(cities);
     }
 }

@@ -1,24 +1,41 @@
 package ru.proba.controller.api;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.proba.DTO.CityAdditionDTO;
+import ru.proba.DTO.city.CityAdditionDTO;
+import ru.proba.DTO.city.CityDto;
+import ru.proba.DTO.city.CityVisualDTO;
 import ru.proba.service.CityService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/cities")
 public class CityController {
 
-    private CityService cityService;
+    private final CityService cityService;
 
-    @Autowired
-    public void setCityService(CityService cityService) {
+    public CityController(CityService cityService) {
         this.cityService = cityService;
     }
 
     @PostMapping("/add")
-    public String add(@RequestBody CityAdditionDTO cityDto) {
+    public void add(@RequestBody CityAdditionDTO cityDto) {
         cityService.save(cityDto);
-        return "Added";
+    }
+
+    @GetMapping("/dto")
+    public CityAdditionDTO setEmptyDTO()
+    {
+        return new CityAdditionDTO();
+    }
+
+    @GetMapping()
+    public List<CityVisualDTO> getCities() {
+        return cityService.getCities(); // Возвращает JSON с cities
+    }
+
+    @GetMapping("/active")
+    public List<CityDto> getActiveCities() {
+        return cityService.getActiveCities();
     }
 }

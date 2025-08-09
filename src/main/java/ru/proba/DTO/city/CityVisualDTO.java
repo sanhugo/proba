@@ -1,4 +1,4 @@
-package ru.proba.DTO;
+package ru.proba.DTO.city;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -10,9 +10,13 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-public class CityAdditionDTO {
+public class CityVisualDTO{
+    @NotBlank
+    private Integer id;
     @NotBlank(message = "Впишите название города")
     private String name;
     @NotBlank(message = "Выберите часовой пояс")
     private String timezone;
+    @NotBlank
+    private Boolean active;
 }
