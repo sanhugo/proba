@@ -25,8 +25,7 @@ public class User {
 
     private Long tg_id;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
+    @Enumerated
     private ArrayList<Role> roles;
 
     @OneToOne(cascade = CascadeType.ALL)

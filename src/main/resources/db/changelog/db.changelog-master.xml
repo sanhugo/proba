@@ -157,6 +157,7 @@
     </changeSet>
 
     <include file="10-01-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="11-01-changelog.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
 
 

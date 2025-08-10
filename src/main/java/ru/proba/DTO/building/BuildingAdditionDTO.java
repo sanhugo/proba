@@ -11,13 +11,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-public class BuildingDTO {
+public class BuildingAdditionDTO {
     @NotNull
-    private Long id;
+    private Integer city_id;
     @NotBlank
     private String address;
     @NotBlank
     private String description;
-    @NotNull
-    private Boolean active;
 }

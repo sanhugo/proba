@@ -58,4 +58,12 @@ public class CityService {
         List<City> cities = cityRepository.findByActive(Boolean.TRUE);
         return CityConverter.convertToDto(cities);
     }
+
+    public String getCityName(Integer id) {
+        Optional<City> s = cityRepository.findById(id);
+        if (s.isPresent()) {
+            return s.get().getName().trim();
+        }
+        else return null;
+    }
 }

@@ -1,6 +1,7 @@
 package ru.proba.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,12 +14,14 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "building_id", nullable = false)
     private Building building;
 
     @Column(nullable = false)
     private String num;
 
     @Column(nullable = false)
+    @Positive
     private Integer capacity;
 }

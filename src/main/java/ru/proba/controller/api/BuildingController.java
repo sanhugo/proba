@@ -1,16 +1,42 @@
 package ru.proba.controller.api;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.proba.DTO.building.BuildingAdditionDTO;
+import ru.proba.DTO.building.BuildingDTO;
+import ru.proba.DTO.building.BuildingIdDTO;
+import ru.proba.service.BuildingService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/buildings")
 public class BuildingController {
 
-    @PostMapping("/add")
-    public String add() {
-        return "Added";
+    private final BuildingService buildingService;
+
+    public BuildingController(BuildingService buildingService) {
+        this.buildingService = buildingService;
     }
 
+    @PostMapping("/add")
+    public void add(@RequestBody BuildingAdditionDTO buildingDTO) {
+        buildingService.save(buildingDTO);
+    }
+    @GetMapping
+    public List<BuildingDTO> getBuildings(@RequestParam(required = false) Integer cityId) {
+        if (cityId == null) {
+            return buildingService.findAll();
+        }
+        return buildingService.findByCity(cityId);
+    }
+
+    @PostMapping("/deactivate")
+    public void deactivate(@RequestBody BuildingIdDTO buildingId) {
+        buildingService.blockBuilding(buildingId.getBuildingId());
+    }
+
+    @PostMapping("/activate")
+    public void activate(@RequestBody BuildingIdDTO buildingId) {
+        buildingService.activateBuilding(buildingId.getBuildingId());
+    }
 }

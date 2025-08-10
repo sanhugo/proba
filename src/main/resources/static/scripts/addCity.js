@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('Ошибка при добавлении города');
                 }
             });
+
         form.reset();
     });
 });

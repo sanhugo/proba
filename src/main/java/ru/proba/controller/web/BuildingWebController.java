@@ -1,18 +1,23 @@
 package ru.proba.controller.web;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import ru.proba.model.Building;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import ru.proba.DTO.building.BuildingAdditionDTO;
 
-@RestController
+@Controller
 @RequestMapping("/buildings")
 public class BuildingWebController {
 
-    @PostMapping("/add")
-    public void addBuilding(@ModelAttribute Building building){
+    @GetMapping()
+    public String getBuildings(){
+        return "buildings";
+    }
 
+    @GetMapping("/add")
+    public String showAddCityForm(Model model) {
+        model.addAttribute("building", new BuildingAdditionDTO());
+        return "addBuilding";
     }
 
 }
