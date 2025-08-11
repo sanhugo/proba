@@ -12,15 +12,18 @@ import ru.proba.repositories.BuildingRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class BuildingService {
+    private final RoomService roomService;
     @PersistenceContext
     private EntityManager entityManager;
     private final BuildingRepository buildingRepository;
 
-    public BuildingService(BuildingRepository buildingRepository) {
+    public BuildingService(BuildingRepository buildingRepository, RoomService roomService) {
         this.buildingRepository = buildingRepository;
+        this.roomService = roomService;
     }
 
     public List<BuildingDTO> findAll() {
@@ -41,21 +44,29 @@ public class BuildingService {
         List<Building> buildings = buildingRepository.findByCityId(id);
         return BuildingConverter.convertToBuildingDTO(buildings);
     }
-    public void blockBuilding(Integer buildingId) {
+    public void blockBuilding(Long buildingId) {
         Optional<Building>  building = buildingRepository.findById(buildingId);
         if (building.isPresent()){
-            Building t = building.get();
-            t.setActive(Boolean.FALSE);
-            buildingRepository.save(t);
+            Long activeRooms = roomService.countActiveRoomsInBuilding(buildingId);
+            if (activeRooms==0)
+            {
+                Building t = building.get();
+                t.setActive(Boolean.FALSE);
+                buildingRepository.save(t);
+            }
         }
     }
 
-    public void activateBuilding(Integer buildingId) {
+    public void activateBuilding(Long buildingId) {
         Optional<Building>  building = buildingRepository.findById(buildingId);
         if (building.isPresent()){
             Building t = building.get();
             t.setActive(Boolean.TRUE);
             buildingRepository.save(t);
         }
+    }
+
+    public Long countActiveByCity(Integer cityId) {
+        return buildingRepository.countByCity_ActiveTrue(cityId);
     }
 }

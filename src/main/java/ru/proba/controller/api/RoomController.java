@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RoomController {
 
     @PostMapping("/add")
-    public String add() {
-        return "Added";
+    public void add() {
+
     }
 }

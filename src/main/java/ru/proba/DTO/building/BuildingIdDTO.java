@@ -10,5 +10,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class BuildingIdDTO {
     @NotNull
-    private Integer buildingId;
+    private Long buildingId;
 }

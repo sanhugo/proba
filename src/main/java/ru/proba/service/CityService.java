@@ -5,19 +5,24 @@ import ru.proba.DTO.city.CityAdditionDTO;
 import ru.proba.DTO.city.CityDto;
 import ru.proba.DTO.city.CityVisualDTO;
 import ru.proba.converter.CityConverter;
+import ru.proba.model.Building;
 import ru.proba.model.City;
 import ru.proba.repositories.CityRepository;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class CityService {
 
     private final CityRepository cityRepository;
+    private final BuildingService buildingService;
 
-    public CityService(CityRepository cityRepository) {
+    public CityService(CityRepository cityRepository, BuildingService buildingService) {
         this.cityRepository = cityRepository;
+        this.buildingService = buildingService;
     }
 
     public void save(CityAdditionDTO city) {
@@ -34,9 +39,12 @@ public class CityService {
     public void blockCity(Integer cityId) {
         Optional<City> s = cityRepository.findById(cityId);
         if (s.isPresent()) {
-            City city = s.get();
-            city.setActive(Boolean.FALSE);
-            cityRepository.save(city);
+            Long buildings = buildingService.countActiveByCity(cityId); //сначала посчитать есть ли активные здания в городе
+            if (buildings == 0) {
+                City city = s.get();
+                city.setActive(Boolean.FALSE);
+                cityRepository.save(city);
+            }
         }
     }
 

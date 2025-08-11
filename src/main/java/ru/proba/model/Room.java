@@ -24,4 +24,7 @@ public class Room {
     @Column(nullable = false)
     @Positive
     private Integer capacity;
+
+    @Column(nullable = false)
+    private Boolean active;
 }
