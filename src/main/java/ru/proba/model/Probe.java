@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import lombok.Getter;
 import lombok.Setter;
+import ru.proba.enums.Condition;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Сущность для постановки даты и времени пробника
+ * Сущность для постановки даты и времени пробника, а также ограничений
  */
 @Entity
 @Getter
@@ -32,5 +33,9 @@ public class Probe {
     private LocalTime startTime;
 
     @OneToMany
-    private List<Record> records =  new ArrayList<Record>();
+    private ArrayList<Record> records;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Condition condition;
 }

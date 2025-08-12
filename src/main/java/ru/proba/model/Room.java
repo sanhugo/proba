@@ -27,4 +27,8 @@ public class Room {
 
     @Column(nullable = false)
     private Boolean active;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false, name = "profiles_id")
+    private Profile owner;
 }

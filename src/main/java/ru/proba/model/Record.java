@@ -1,7 +1,6 @@
 package ru.proba.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Null;
 import lombok.Getter;
 import lombok.Setter;
 import ru.proba.enums.ExamSubject;
@@ -26,4 +25,11 @@ public class Record {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ExamSubject subject;
+
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "probes_id")
+    private Probe probe;
+
+    @Column(nullable = false)
+    private Boolean isPayed;
 }
