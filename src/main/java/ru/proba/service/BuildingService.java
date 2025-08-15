@@ -2,6 +2,7 @@ package ru.proba.service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.proba.DTO.building.BuildingAdditionDTO;
 import ru.proba.DTO.building.BuildingDTO;
@@ -15,6 +16,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Service
+@Slf4j
 public class BuildingService {
     private final RoomService roomService;
     @PersistenceContext

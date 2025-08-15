@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.proba.enums.Role;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -26,8 +27,10 @@ public class User {
     @Column
     private Long tg_id;
 
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "users_id"))
     @Enumerated(EnumType.STRING)
-    private ArrayList<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     private Profile profile;

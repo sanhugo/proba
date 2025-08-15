@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             data.forEach(tz => {
                 const option = document.createElement('option');
-                option.value = tz;
-                option.textContent = tz;
+                option.value = tz.zoneId;
+                option.textContent = tz.region;
                 timezoneSelect.appendChild(option);
             });
         });

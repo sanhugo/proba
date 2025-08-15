@@ -1,6 +1,7 @@
 package ru.proba.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import ru.proba.enums.ExamSubject;
@@ -18,12 +19,14 @@ public class Record {
     @Column(nullable = false)
     private Long id;
 
+    @NotNull
     @ManyToOne
-    @JoinColumn(nullable = false,name = "users_id")
-    private User user;
+    @JoinColumn(nullable = false,name = "profiles_id")
+    private Profile profile;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @NotNull
     private ExamSubject subject;
 
     @ManyToOne

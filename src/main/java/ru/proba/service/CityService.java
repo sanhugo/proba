@@ -1,5 +1,6 @@
 package ru.proba.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.proba.DTO.city.CityAdditionDTO;
 import ru.proba.DTO.city.CityDto;
@@ -12,9 +13,9 @@ import ru.proba.repositories.CityRepository;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
+@Slf4j
 public class CityService {
 
     private final CityRepository cityRepository;

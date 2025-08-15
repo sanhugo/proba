@@ -1,16 +1,22 @@
 package ru.proba.controller.api;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+import ru.proba.DTO.user.UserRegistrationDTO;
+import ru.proba.service.UserService;
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
 
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
     @PostMapping("/add")
-    public String add() {
-        return "Added";
+    public void add(@RequestBody UserRegistrationDTO dto) {
+        userService.addUser(dto);
     }
 }

@@ -1,0 +1,112 @@
+[
+  {
+    "zoneId": "Europe/Kaliningrad",
+    "region": "Калининград",
+    "utcOffset": "+02:00"
+  },
+  {
+    "zoneId": "Europe/Moscow",
+    "region": "Москва, Санкт-Петербург",
+    "utcOffset": "+03:00"
+  },
+  {
+    "zoneId": "Europe/Simferopol",
+    "region": "Крым",
+    "utcOffset": "+03:00"
+  },
+  {
+    "zoneId": "Europe/Volgograd",
+    "region": "Волгоград",
+    "utcOffset": "+03:00"
+  },
+  {
+    "zoneId": "Europe/Samara",
+    "region": "Самара",
+    "utcOffset": "+04:00"
+  },
+  {
+    "zoneId": "Asia/Yekaterinburg",
+    "region": "Екатеринбург",
+    "utcOffset": "+05:00"
+  },
+  {
+    "zoneId": "Asia/Omsk",
+    "region": "Омск",
+    "utcOffset": "+06:00"
+  },
+  {
+    "zoneId": "Asia/Novosibirsk",
+    "region": "Новосибирск",
+    "utcOffset": "+07:00"
+  },
+  {
+    "zoneId": "Asia/Barnaul",
+    "region": "Барнаул",
+    "utcOffset": "+07:00"
+  },
+  {
+    "zoneId": "Asia/Tomsk",
+    "region": "Томск",
+    "utcOffset": "+07:00"
+  },
+  {
+    "zoneId": "Asia/Krasnoyarsk",
+    "region": "Красноярск",
+    "utcOffset": "+07:00"
+  },
+  {
+    "zoneId": "Asia/Irkutsk",
+    "region": "Иркутск, Улан-Удэ",
+    "utcOffset": "+08:00"
+  },
+  {
+    "zoneId": "Asia/Chita",
+    "region": "Чита",
+    "utcOffset": "+09:00"
+  },
+  {
+    "zoneId": "Asia/Yakutsk",
+    "region": "Якутск",
+    "utcOffset": "+09:00"
+  },
+  {
+    "zoneId": "Asia/Khandyga",
+    "region": "Хандыга",
+    "utcOffset": "+09:00"
+  },
+  {
+    "zoneId": "Asia/Vladivostok",
+    "region": "Владивосток",
+    "utcOffset": "+10:00"
+  },
+  {
+    "zoneId": "Asia/Ust-Nera",
+    "region": "Усть-Нера",
+    "utcOffset": "+10:00"
+  },
+  {
+    "zoneId": "Asia/Magadan",
+    "region": "Магадан",
+    "utcOffset": "+11:00"
+  },
+  {
+    "zoneId": "Asia/Sakhalin",
+    "region": "Сахалин",
+    "utcOffset": "+11:00"
+  },
+  {
+    "zoneId": "Asia/Srednekolymsk",
+    "region": "Среднеколымск",
+    "utcOffset": "+11:00"
+  },
+  {
+    "zoneId": "Asia/Kamchatka",
+    "region": "Камчатка",
+    "utcOffset": "+12:00"
+  },
+  {
+    "zoneId": "Asia/Anadyr",
+    "region": "Анадырь",
+    "utcOffset": "+12:00"
+  }
+]
