@@ -22,8 +22,6 @@ public class Profile {
     @Column(nullable = false)
     private String surname;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(nullable = false, name = "users_id", unique = true)
-    private User user;
+    @Column(nullable=false)
+    private Long user_id;
 }

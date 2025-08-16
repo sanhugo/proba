@@ -4,7 +4,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.proba.DTO.user.UserRegistrationDTO;
 import ru.proba.enums.Role;
-import ru.proba.model.User;
 import ru.proba.repositories.UserRepository;
 
 import java.util.Optional;
