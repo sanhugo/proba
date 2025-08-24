@@ -1,8 +1,8 @@
-package ru.proba.authenticaton.controller;
+package ru.proba.authentication.controller;
 
 import org.springframework.web.bind.annotation.*;
-import ru.proba.authenticaton.dto.UserRegistrationDTO;
-import ru.proba.authenticaton.service.UserService;
+import ru.proba.authentication.dto.UserRegistrationDTO;
+import ru.proba.authentication.service.UserService;
 
 
 @RestController

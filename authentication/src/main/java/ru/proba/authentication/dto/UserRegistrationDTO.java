@@ -1,4 +1,4 @@
-package ru.proba.authenticaton.dto;
+package ru.proba.authentication.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

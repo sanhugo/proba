@@ -1,11 +1,11 @@
-package ru.proba.authenticaton.service;
+package ru.proba.authentication.service;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.proba.authenticaton.dto.UserRegistrationDTO;
-import ru.proba.authenticaton.entity.User;
-import ru.proba.authenticaton.enums.Role;
-import ru.proba.authenticaton.repository.UserRepository;
+import ru.proba.authentication.dto.UserRegistrationDTO;
+import ru.proba.authentication.entity.User;
+import ru.proba.authentication.enums.Role;
+import ru.proba.authentication.repository.UserRepository;
 
 
 import java.util.Optional;
